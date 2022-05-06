@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
 import { Dehaze, Close } from "@material-ui/icons";
+import { selectCars } from "../features/car/carSlice";
+import { useSelector } from "react-redux";
 
 const Header = () => {
 
 const [burgeStatus , setBurgerStatus] = useState(false)
+const cars = useSelector(selectCars)
 
   return (
     <Container>
@@ -14,10 +16,9 @@ const [burgeStatus , setBurgerStatus] = useState(false)
       </a>
 
       <Menu>
-        <a href="#">Model S</a>
-        <a href="#">Model 3</a>
-        <a href="#">Model X</a>
-        <a href="#">Model Y</a>
+        {cars && cars.map((car , index) =>(
+        <a key={index} href="#">{car}</a>
+        ))}
       </Menu>
 
       <RightMenu>
@@ -30,6 +31,10 @@ const [burgeStatus , setBurgerStatus] = useState(false)
         <CloseWrapper>
           <CustomClose onClick={()=>setBurgerStatus(false)}/>
         </CloseWrapper>
+
+        {cars && cars.map((car , index) => (
+          <li key={index}><a href="#">{car}</a></li>
+        ))}
         <li>
           <a href="#">Existing Inventory</a>
         </li>
@@ -44,15 +49,6 @@ const [burgeStatus , setBurgerStatus] = useState(false)
         </li>
         <li>
           <a href="#">Roadaster</a>
-        </li>
-        <li>
-          <a href="#">Existing Inventory</a>
-        </li>
-        <li>
-          <a href="#">Existing Inventory</a>
-        </li>
-        <li>
-          <a href="#">Existing Inventory</a>
         </li>
       </BurgerNav>
     </Container>
