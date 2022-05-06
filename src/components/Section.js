@@ -1,7 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const Section = ({title , description , leftBtnText , rightBtnText , backgroundImg}) => {
+const Section = ({
+  title,
+  description,
+  leftBtnText,
+  rightBtnText,
+  backgroundImg,
+}) => {
   return (
     <Wrap bgImage={backgroundImg}>
       <ItemText>
@@ -11,8 +17,7 @@ const Section = ({title , description , leftBtnText , rightBtnText , backgroundI
       <Buttons>
         <ButtonGroup>
           <LeftButton>{leftBtnText}</LeftButton>
-
-          <RightButton>{rightBtnText}</RightButton>
+          {rightBtnText && <RightButton>{rightBtnText}</RightButton>}
         </ButtonGroup>
 
         <DownArrow src="/images/down-arrow.svg" />
@@ -26,7 +31,7 @@ export default Section;
 const Wrap = styled.div`
   width: 100vw;
   height: 100vh;
-  background-image: ${props => `url("/images/${props.bgImage}")`};
+  background-image: ${(props) => `url("/images/${props.bgImage}")`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
