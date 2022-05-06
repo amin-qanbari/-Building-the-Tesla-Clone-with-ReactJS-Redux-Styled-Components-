@@ -47,6 +47,12 @@ const Home = () => {
         leftBtnText="Order now"
         rightBtnText="Learn more"
         />
+        <Section
+        title="Accesories"
+        description=""
+        backgroundImg="accessories.jpg"
+        leftBtnText="Shop now"
+        />
     </Container>
   )
 }
